@@ -50,8 +50,10 @@ use Fuliang\BloomFilter\FilterRepeatedComments;
 $bf = new FilterRepeatedComments();
 $bf->add('item1');
 $bf->add('item2');
-$bf->add('item3');
+
 $bf->exists('item1'); //true
 $bf->exists('item2'); //true
-$bf->exists('item3'); //true
+
+$bf->delete('item1');
+$bf->exists('item1'); //false
 ```
