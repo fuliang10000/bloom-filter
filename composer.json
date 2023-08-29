@@ -1,0 +1,23 @@
+{
+    "name": "fuliang/bloom-filter",
+    "type": "library",
+    "description": "基于redis实现的布隆过滤器",
+    "keywords": ["bloom", "filter"],
+    "require": {
+        "php": ">=7.4",
+        "ext-redis": "*"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Fuliang\\BloomFilter\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ling Zi",
+            "email": "idevjdgittyucidvdinoper007@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
