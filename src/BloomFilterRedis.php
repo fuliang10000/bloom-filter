@@ -40,15 +40,29 @@ abstract class BloomFilterRedis
     }
 
     /**
+     * 从集合中删除.
+     * @return array|false|\Redis
+     * @throws \RedisException
+     */
+    public function delete(string $string)
+    {
+        $pipe = $this->Redis->multi();
+        foreach ($this->hashFunction as $function) {
+            $hash = $this->Hash->{$function}($string);
+            $pipe->setBit($this->bucket, $hash, 0);
+        }
+        return $pipe->exec();
+    }
+
+    /**
      * 查询是否存在, 存在的一定会存在, 不存在有一定几率会误判.
      * @throws \RedisException
      */
     public function exists(string $string): bool
     {
         $pipe = $this->Redis->multi();
-        $len  = strlen($string);
         foreach ($this->hashFunction as $function) {
-            $hash = $this->Hash->{$function}($string, $len);
+            $hash = $this->Hash->{$function}($string);
             $pipe = $pipe->getBit($this->bucket, $hash);
         }
         $res = $pipe->exec();
