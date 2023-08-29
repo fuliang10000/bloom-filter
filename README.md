@@ -2,9 +2,9 @@
 
 ## 安装 ##
 
-    ```
-    composer require fuliang/bloom-filter
-    ```
+```bash
+composer require fuliang/bloom-filter
+```
 
 ## 使用 ##
 
