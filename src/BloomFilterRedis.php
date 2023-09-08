@@ -17,7 +17,7 @@ abstract class BloomFilterRedis
      */
     public function __construct()
     {
-        if (! $this->bucket) {
+        if (! $this->bucket || ! $this->hashFunction) {
             throw new \Exception('需要定义bucket和hashFunction', 500);
         }
         $this->Hash  = new BloomFilterHash();
